@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheme Connect – Government Scheme Awareness Portal | Know • Access • Benefit</title>
+  <meta name="description" content="Scheme Connect helps Indian citizens discover government welfare schemes, understand eligibility criteria, learn about benefits, and access verified official application links.">
+  <meta name="keywords" content="Government schemes, Indian welfare schemes, PM-KISAN, Ayushman Bharat, PMAY housing, scholarships, eligibility checker, Kannada schemes, Document checker">
+  
+  <!-- Google Fonts: Poppins (Headings), Open Sans (Body), Noto Sans Kannada (Kannada Unicode) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="symbol.jpeg">
+</head>
+<body>
+
+  <!-- ==================== ACCESSIBILITY TOP BAR ==================== -->
+  <aside class="a11y-topbar" aria-label="Accessibility and official service indicators">
+    <div class="container">
+      <div class="a11y-left">
+        <span class="official-tag" id="topbar-official-tag">
+          <span class="tricolor-stripe" aria-hidden="true"></span>
+          National Public-Service Awareness Initiative • Government Schemes for a Better Tomorrow
+        </span>
+      </div>
+      <div class="a11y-right">
+        <!-- Text Size Resizer -->
+        <div class="font-controls" aria-label="Text size adjustment">
+          <span id="label-text-size">Text Size:</span>
+          <button type="button" class="a11y-btn" id="btn-font-decrease" title="Decrease Font Size" aria-label="Decrease text size">A-</button>
+          <button type="button" class="a11y-btn" id="btn-font-reset" title="Normal Font Size" aria-label="Reset text size">A</button>
+          <button type="button" class="a11y-btn" id="btn-font-increase" title="Increase Font Size" aria-label="Increase text size">A+</button>
+        </div>
+        <!-- High Contrast Mode Toggle -->
+        <button type="button" class="theme-toggle-btn" id="btn-high-contrast" aria-label="Toggle High Contrast Mode">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M12 2a10 10 0 0 1 0 20"/></svg>
+          <span id="contrast-text">High Contrast</span>
+        </button>
+        <!-- Voice Reader Audio Preview -->
+        <button type="button" class="screen-reader-btn" id="btn-voice-helper" aria-label="Listen to Portal Intro">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <span id="label-voice-reader">Voice Reader</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== STICKY NAVIGATION BAR ==================== -->
+  <header class="main-header" id="main-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <!-- Logo -->
+        <a href="#home" class="nav-brand" aria-label="Scheme Connect Homepage">
+          <img src="symbol.jpeg" alt="Scheme Connect Logo - Know Access Benefit" class="logo-img">
+          <div class="brand-text">
+            <span class="brand-title">Scheme <span class="connect-highlight">Connect</span></span>
+            <span class="brand-tagline">Know • Access • Benefit</span>
+          </div>
+        </a>
+
+        <!-- Nav Links -->
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#home" class="nav-link active" id="nav-item-home">Home</a></li>
+          <li><a href="#all-schemes" class="nav-link" id="nav-item-all-schemes">All Schemes</a></li>
+          <li><a href="#categories" class="nav-link" id="nav-item-categories">Categories</a></li>
+          <li><a href="#eligibility" class="nav-link" id="nav-item-eligibility">Eligibility Checker</a></li>
+          <li><a href="#document-checker" class="nav-link" id="nav-item-doc-checker" style="color: var(--color-indian-green); font-weight: 600;">Document Checker</a></li>
+          <li><a href="#about" class="nav-link" id="nav-item-about">About Us</a></li>
+          <li><a href="#contact" class="nav-link" id="nav-item-contact">Contact Us</a></li>
+        </ul>
+
+        <!-- Nav Actions -->
+        <div class="nav-actions">
+          <!-- English / ಕನ್ನಡ Language Switcher (Requirement #18) -->
+          <button type="button" class="lang-toggle-nav-btn" id="btn-lang-toggle" title="Switch between English and ಕನ್ನಡ">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-toggle-label">English / ಕನ್ನಡ</span>
+          </button>
+
+          <!-- Saved Schemes Button with Badge -->
+          <button type="button" class="bookmark-nav-btn" id="btn-view-saved" title="View Saved Schemes" aria-label="View Saved Schemes">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <span class="bookmark-badge" id="nav-saved-count">0</span>
+          </button>
+          
+          <!-- Admin Portal Button -->
+          <button type="button" class="btn btn-outline btn-sm" id="btn-open-admin" title="Open Admin Portal to Manage Schemes">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span id="nav-admin-label">Admin Portal</span>
+          </button>
+
+          <!-- Citizen Login / Register -->
+          <button type="button" class="btn btn-primary btn-sm" id="btn-open-login">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span id="nav-user-label">Login / Register</span>
+          </button>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HOMEPAGE HERO SECTION ==================== -->
+    <section class="hero-section" id="home">
+      <!-- Flowing Blue & Green Waves Vector Canvas -->
+      <div class="hero-wave-canvas" aria-hidden="true">
+        <svg class="wave-shape" viewBox="0 0 1440 280" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path opacity="0.35" d="M0,96L48,117.3C96,139,192,181,288,181.3C384,181,480,139,576,144C672,149,768,203,864,213.3C960,224,1056,192,1152,165.3C1248,139,1344,117,1392,106.7L1440,96L1440,280L1392,280C1344,280,1248,280,1152,280C1056,280,960,280,864,280C768,280,672,280,576,280C480,280,384,280,288,280C192,280,96,280,48,280L0,280Z" fill="#DCEEFF"/>
+          <path opacity="0.25" d="M0,192L48,186.7C96,181,192,171,288,144C384,117,480,75,576,80C672,85,768,139,864,165.3C960,192,1056,192,1152,176C1248,160,1344,128,1392,112L1440,96L1440,280L1392,280C1344,280,1248,280,1152,280C1056,280,960,280,864,280C768,280,672,280,576,280C480,280,384,280,288,280C192,280,96,280,48,280L0,280Z" fill="#DDF2DF"/>
+          <path opacity="0.12" d="M0,224L60,213.3C120,203,240,181,360,186.7C480,192,600,224,720,218.7C840,213,960,171,1080,165.3C1200,160,1320,192,1380,208L1440,224L1440,280L1380,280C1320,280,1200,280,1080,280C960,280,840,280,720,280C600,280,480,280,360,280C240,280,120,280,60,280L0,280Z" fill="#FFB45C"/>
+        </svg>
+      </div>
+
+      <!-- Faint Decorative Floating Icons for 6 Core Welfare Pillars -->
+      <div class="hero-faint-icons" aria-hidden="true">
+        <div class="faint-icon icon-edu" title="Education">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="faint-icon icon-health" title="Healthcare">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        </div>
+        <div class="faint-icon icon-agri" title="Agriculture">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0 0-10 10c0 5.52 4.48 10 10 10s10-4.48 10-10A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 1 1-2 0v-.07A7.002 7.002 0 0 1 5.07 11H5a1 1 0 1 1 0-2h.07A7.002 7.002 0 0 1 11 5.07V5a1 1 0 1 1 2 0v.07A7.002 7.002 0 0 1 18.93 11H19a1 1 0 1 1 0 2h-.07A7.002 7.002 0 0 1 13 16.93z"/></svg>
+        </div>
+        <div class="faint-icon icon-house" title="Housing">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="faint-icon icon-emp" title="Employment">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="faint-icon icon-fin" title="Financial Assistance">
+          <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 7h8M8 11h8M12 11v6M14 17l-4-6"/></svg>
+        </div>
+      </div>
+
+      <!-- Subtle India Map Backdrop Silhouette -->
+      <div class="hero-map-backdrop" aria-hidden="true">
+        <svg viewBox="0 0 500 550" fill="currentColor">
+          <path d="M245,20 C250,25 260,35 270,40 C280,45 295,50 300,60 C305,70 315,85 315,95 C315,105 330,115 340,120 C350,125 365,130 375,145 C385,160 395,175 400,190 C405,205 390,215 385,225 C380,235 375,250 365,260 C355,270 340,275 330,285 C320,295 310,310 300,325 C290,340 280,355 270,370 C260,385 250,400 245,420 C240,440 235,465 230,485 C225,495 220,500 215,495 C210,480 200,455 195,435 C190,415 180,395 170,380 C160,365 150,350 140,335 C130,320 120,305 115,290 C110,275 105,260 100,245 C95,230 85,215 90,200 C95,185 110,175 120,160 C130,145 145,135 155,125 C165,115 175,100 185,90 C195,80 210,65 220,50 C230,35 240,25 245,20 Z" />
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="saffron-dot"></span>
+            <span id="hero-pill-text">Government Welfare Awareness &amp; Empowerment Portal</span>
+          </div>
+          
+          <h1 class="hero-headline">
+            <span id="hero-headline-1">Discover Government Schemes.</span><br>
+            <span class="highlight-green" id="hero-headline-2">Unlock Better Opportunities.</span>
+          </h1>
+          
+          <p class="hero-description" id="hero-desc-text">
+            Find government schemes designed to support your education, healthcare, agriculture, employment and financial well-being.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions">
+            <a href="#all-schemes" class="btn btn-primary" id="btn-hero-explore">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span id="label-hero-explore">Explore Schemes</span>
+            </a>
+            <a href="#eligibility" class="btn btn-secondary" id="btn-hero-check">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <span id="label-hero-check">Check Your Eligibility</span>
+            </a>
+            <a href="#document-checker" class="btn btn-outline-green" style="background: white;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>AI Document Checker</span>
+            </a>
+          </div>
+
+          <!-- Prominent Search Bar (Requirement #8) -->
+          <div class="hero-search-wrapper" role="search">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A4B8C" stroke-width="2.2" style="margin-left: 0.75rem;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="hero-search-input" class="search-input-field" placeholder="Search government schemes by name, category or benefit..." aria-label="Search government schemes by name, category or benefit">
+            <button type="button" class="btn btn-primary btn-sm" id="btn-hero-search-go" style="padding: 0.65rem 1.25rem;">Search</button>
+          </div>
+
+          <!-- Quick Pill Tags -->
+          <div class="hero-popular-tags">
+            <span class="tags-label" id="label-popular-searches">Popular Searches:</span>
+            <button type="button" class="tag-pill" data-search="PM-KISAN">PM-KISAN</button>
+            <button type="button" class="tag-pill" data-search="Ayushman Bharat">Ayushman Bharat (Health)</button>
+            <button type="button" class="tag-pill" data-search="PMAY">PMAY Housing</button>
+            <button type="button" class="tag-pill" data-search="Sukanya Samriddhi">Sukanya Samriddhi</button>
+            <button type="button" class="tag-pill" data-search="MUDRA">MUDRA Business Loan</button>
+            <button type="button" class="tag-pill" data-search="Scholarship">Student Scholarship</button>
+            <button type="button" class="tag-pill" data-search="Gruha Lakshmi">Gruha Lakshmi (Karnataka)</button>
+          </div>
+
+          <!-- Trust Counters / Telemetry -->
+          <div class="trust-badges-bar">
+            <div class="trust-badges-grid">
+              <div class="trust-badge-item">
+                <span class="trust-badge-number" id="stats-total-schemes">30+</span>
+                <span class="trust-badge-label" id="label-trust-schemes">Verified Welfare Schemes</span>
+              </div>
+              <div class="trust-badge-item">
+                <span class="trust-badge-number">9</span>
+                <span class="trust-badge-label" id="label-trust-categories">Key Citizen Categories</span>
+              </div>
+              <div class="trust-badge-item">
+                <span class="trust-badge-number">Pan-India</span>
+                <span class="trust-badge-label" id="label-trust-coverage">Central &amp; State Portals</span>
+              </div>
+              <div class="trust-badge-item">
+                <span class="trust-badge-number">100% Free</span>
+                <span class="trust-badge-label" id="label-trust-free">Independent Public Service</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SCHEME CATEGORIES SECTION ==================== -->
+    <section class="section section-bg-light" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-categories">Welfare Sectors</span>
+          <h2 class="section-title" id="title-categories">Government Scheme Categories</h2>
+          <p class="section-subtitle" id="subtitle-categories">
+            Explore dedicated welfare initiatives organized across nine vital life stages and socio-economic sectors.
+          </p>
+        </div>
+
+        <div class="categories-grid" id="categories-grid">
+          <!-- Dynamically populated from JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED SCHEMES SECTION ==================== -->
+    <section class="section" id="featured-schemes">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-featured" style="background-color: var(--color-saffron-light); color: var(--color-saffron-dark);">Flagship Initiatives</span>
+          <h2 class="section-title" id="title-featured">Popular &amp; High-Impact Schemes</h2>
+          <p class="section-subtitle" id="subtitle-featured">
+            Transformative national and state welfare schemes offering direct financial assistance, healthcare security, and livelihood development.
+          </p>
+        </div>
+
+        <div class="featured-schemes-grid" id="featured-schemes-grid">
+          <!-- Dynamically populated from JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ALL GOVERNMENT SCHEMES SECTION ==================== -->
+    <section class="section section-bg-light" id="all-schemes">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-all-schemes">Comprehensive Directory</span>
+          <h2 class="section-title" id="title-all-schemes">All Government Schemes</h2>
+          <p class="section-subtitle" id="subtitle-all-schemes">
+            Discover verified Central and State welfare programs with authentic eligibility criteria, benefits breakdown, required documents, and official application portals.
+          </p>
+        </div>
+
+        <!-- Filter Controls Box -->
+        <div class="schemes-filter-wrapper">
+          <div class="filter-controls-grid">
+            <!-- Filter: Category -->
+            <div class="filter-group">
+              <label for="filter-category" id="label-filter-cat">Scheme Category</label>
+              <select id="filter-category" class="filter-select">
+                <option value="all">All Categories</option>
+                <option value="education">Education Schemes</option>
+                <option value="agriculture">Agriculture Schemes</option>
+                <option value="healthcare">Healthcare Schemes</option>
+                <option value="employment">Employment Schemes</option>
+                <option value="women">Women Empowerment Schemes</option>
+                <option value="housing">Housing Schemes</option>
+                <option value="financial">Financial Assistance Schemes</option>
+                <option value="social_welfare">Social Welfare Schemes</option>
+                <option value="skill">Skill Development Schemes</option>
+              </select>
+            </div>
+
+            <!-- Filter: State -->
+            <div class="filter-group">
+              <label for="filter-state" id="label-filter-state">State / Region</label>
+              <select id="filter-state" class="filter-select">
+                <option value="all">All India &amp; States</option>
+                <option value="All India">Central Government (All India)</option>
+                <option value="Karnataka">Karnataka State Schemes</option>
+              </select>
+            </div>
+
+            <!-- Filter: Beneficiary Group -->
+            <div class="filter-group">
+              <label for="filter-beneficiary" id="label-filter-ben">Beneficiary Group</label>
+              <select id="filter-beneficiary" class="filter-select">
+                <option value="all">All Beneficiaries</option>
+                <option value="Farmers">Farmers &amp; Agri Households</option>
+                <option value="Students">Students &amp; Scholars</option>
+                <option value="Women">Women &amp; Girls</option>
+                <option value="Daily Wage Workers">Daily Wage &amp; Construction Workers</option>
+                <option value="Low Income Families">Low-Income &amp; BPL Families</option>
+                <option value="Senior Citizens">Senior Citizens &amp; Elderly</option>
+                <option value="Entrepreneurs">Entrepreneurs &amp; Small Businesses</option>
+              </select>
+            </div>
+
+            <!-- Filter: Scheme Type -->
+            <div class="filter-group">
+              <label for="filter-type" id="label-filter-type">Scheme Type</label>
+              <select id="filter-type" class="filter-select">
+                <option value="all">All Scheme Types</option>
+                <option value="Central Sector Scheme">Central Sector Scheme</option>
+                <option value="Centrally Sponsored Scheme">Centrally Sponsored Scheme</option>
+                <option value="State Government Scheme">State Government Scheme</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Bottom bar of filters with active counter and reset -->
+          <div class="filter-bottom-bar">
+            <div class="results-count-text">
+              <span id="label-showing">Showing</span> <strong id="filter-result-count">0</strong> <span id="label-verified-count">verified schemes</span>
+            </div>
+            <div class="active-filter-chips" id="active-filter-chips">
+              <!-- Dynamically populated -->
+            </div>
+            <button type="button" class="clear-filters-btn" id="btn-clear-filters">Reset All Filters</button>
+          </div>
+        </div>
+
+        <!-- Schemes Cards Grid -->
+        <div class="schemes-cards-grid" id="schemes-cards-grid">
+          <!-- Dynamically populated from JS -->
+        </div>
+
+        <!-- Empty State (if no results match) -->
+        <div id="schemes-empty-state" style="display: none; text-align: center; padding: 4rem 1rem; background: var(--color-white); border-radius: var(--radius-lg); border: 1px dashed var(--color-border); margin-top: 1.5rem;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-light)" stroke-width="1.5" style="margin-bottom: 1rem;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <h3 style="color: var(--color-indian-blue); margin-bottom: 0.5rem;">No schemes matched your criteria</h3>
+          <p style="color: var(--color-text-muted); max-width: 480px; margin: 0 auto 1.5rem;">Try relaxing your search terms or clearing one of the filters to see more available government programs.</p>
+          <button type="button" class="btn btn-outline" id="btn-empty-reset">Clear Search &amp; Filters</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ELIGIBILITY CHECKER SECTION ==================== -->
+    <section class="section" id="eligibility">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-checker" style="background-color: var(--color-soft-blue); color: var(--color-indian-blue);">Smart Citizen Tool</span>
+          <h2 class="section-title" id="title-checker">Interactive Eligibility Checker</h2>
+          <p class="section-subtitle" id="subtitle-checker">
+            Enter basic profile information to discover government welfare schemes that may suit your circumstances.
+          </p>
+        </div>
+
+        <div class="eligibility-checker-box">
+          <div class="eligibility-header-banner">
+            <h3 class="checker-banner-title" id="banner-checker-title">Find Schemes Tailored to Your Profile</h3>
+            <p class="checker-banner-subtitle" id="banner-checker-subtitle">
+              Select your age, location, occupation, and family income to instantly identify potentially relevant central and state schemes.
+            </p>
+          </div>
+
+          <div class="checker-content-body">
+            <form id="eligibility-form">
+              <div class="checker-form-grid">
+                <!-- 1. Age Group -->
+                <div class="form-field-group">
+                  <label for="check-age" id="label-field-age">Age Group</label>
+                  <select id="check-age" required>
+                    <option value="">Select Age Group</option>
+                    <option value="under18">Under 18 Years (Child / School Student)</option>
+                    <option value="18-25">18 – 25 Years (Youth / College Student)</option>
+                    <option value="26-40">26 – 40 Years (Adult / Worker / Farmer)</option>
+                    <option value="41-59">41 – 59 Years (Middle Age / Worker)</option>
+                    <option value="60plus">60 Years &amp; Above (Senior Citizen)</option>
+                  </select>
+                </div>
+
+                <!-- 2. State -->
+                <div class="form-field-group">
+                  <label for="check-state" id="label-field-state">State / Union Territory</label>
+                  <select id="check-state" required>
+                    <option value="All India">All India (Central Schemes)</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Other">Other State / UT</option>
+                  </select>
+                </div>
+
+                <!-- 3. Occupation -->
+                <div class="form-field-group">
+                  <label for="check-occupation" id="label-field-occ">Occupation / Current Role</label>
+                  <select id="check-occupation" required>
+                    <option value="">Select Occupation</option>
+                    <option value="farmer">Farmer / Agricultural Laborer</option>
+                    <option value="student">Student / Scholar</option>
+                    <option value="daily_wage">Daily Wage / Construction / Unorganised Worker</option>
+                    <option value="homemaker">Homemaker / Housewife</option>
+                    <option value="self_employed">Self-Employed / Micro Business / Artisan</option>
+                    <option value="unemployed">Unemployed / Job Seeker</option>
+                    <option value="retired">Retired / Senior Citizen</option>
+                    <option value="salaried">Salaried Employee</option>
+                  </select>
+                </div>
+
+                <!-- 4. Annual Family Income -->
+                <div class="form-field-group">
+                  <label for="check-income" id="label-field-income">Annual Family Income Range</label>
+                  <select id="check-income" required>
+                    <option value="">Select Income Bracket</option>
+                    <option value="below1L">Below ₹1,00,000 (Low Income / BPL)</option>
+                    <option value="1L-2.5L">₹1,00,000 – ₹2,50,000</option>
+                    <option value="2.5L-5L">₹2,50,000 – ₹5,00,000</option>
+                    <option value="5L-8L">₹5,00,000 – ₹8,00,000</option>
+                    <option value="above8L">Above ₹8,00,000</option>
+                  </select>
+                </div>
+
+                <!-- 5. Educational Status -->
+                <div class="form-field-group">
+                  <label for="check-education" id="label-field-edu">Educational Status</label>
+                  <select id="check-education" required>
+                    <option value="">Select Education Level</option>
+                    <option value="school">Primary / Middle School (Class 1–8)</option>
+                    <option value="10th_pass">10th / 12th Pass / PUC</option>
+                    <option value="graduate">Undergraduate / Diploma / ITI</option>
+                    <option value="post_graduate">Postgraduate / Professional Degree</option>
+                    <option value="no_formal">No Formal Education / Literacy</option>
+                  </select>
+                </div>
+
+                <!-- 6. Beneficiary / Social Category -->
+                <div class="form-field-group">
+                  <label for="check-category" id="label-field-cat">Beneficiary Category</label>
+                  <select id="check-category">
+                    <option value="all">General / Not Applicable</option>
+                    <option value="female">Women / Girl Child</option>
+                    <option value="SC">Scheduled Caste (SC)</option>
+                    <option value="ST">Scheduled Tribe (ST)</option>
+                    <option value="OBC">Other Backward Classes (OBC)</option>
+                    <option value="EWS">Economically Weaker Section (EWS)</option>
+                    <option value="disability">Person with Disability (Divyangjan)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Privacy Notice (Requirement #7) -->
+              <div class="checker-privacy-note" id="box-checker-privacy">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span><strong>Privacy Reassurance:</strong> Scheme Connect collects only necessary criteria for matching. We do not ask for or store sensitive personal data such as Aadhaar numbers or bank accounts. This calculation runs securely in your browser.</span>
+              </div>
+
+              <div class="checker-actions-row">
+                <button type="submit" class="btn btn-secondary" id="btn-run-checker">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  <span id="label-btn-check-relevant">Check Relevant Schemes</span>
+                </button>
+                <button type="reset" class="btn btn-outline" id="btn-reset-checker">Reset Form</button>
+              </div>
+            </form>
+
+            <!-- Results Container -->
+            <div class="eligibility-results-container" id="eligibility-results">
+              <div class="results-summary-banner">
+                <div class="results-summary-left">
+                  <h3 id="matched-schemes-title">Matching Schemes Found</h3>
+                  <p id="matched-schemes-subtitle" style="margin: 0; color: var(--color-text-muted); font-size: 0.9rem;">
+                    Based on your responses, the following government schemes may suit your profile.
+                  </p>
+                </div>
+                <div class="results-summary-right">
+                  <span class="btn btn-primary btn-sm" id="matched-count-pill" style="pointer-events: none;">0 Schemes</span>
+                </div>
+              </div>
+
+              <!-- Mandatory Requirement #7 Disclaimer -->
+              <div class="disclaimer-box-checker" id="box-checker-disclaimer">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span><strong>Important Notice on Eligibility:</strong> Scheme Connect does not claim guaranteed eligibility or loan/grant approval. This tool provides advisory guidance based on published government criteria. Final sanction and approval strictly depend on verification by the relevant government department or nodal agency.</span>
+              </div>
+
+              <div class="matched-schemes-list" id="matched-schemes-list">
+                <!-- Dynamically populated from JS -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== AI DOCUMENT QUALITY & VERIFICATION CHECKER (Requirement #23, 24) ==================== -->
+    <section class="section section-bg-light" id="document-checker">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-doc-checker" style="background-color: var(--color-soft-green); color: var(--color-indian-green);">AI Quality &amp; Accuracy Assistant</span>
+          <h2 class="section-title" id="title-doc-checker">AI Document Verification &amp; Quality Checker</h2>
+          <div class="doc-checker-tagline" id="tagline-doc-checker">
+            "Check Your Documents Before You Apply – Avoid Errors, Save Time."
+          </div>
+          <p class="section-subtitle" id="subtitle-doc-checker">
+            Upload your document to check its quality, readability and suitability before applying for a government scheme.
+          </p>
+        </div>
+
+        <div class="doc-checker-wrapper">
+          <!-- Applicant & Target Scheme Config -->
+          <div class="doc-config-grid">
+            <div class="form-field-group">
+              <label for="doc-applicant-name-input" id="label-applicant-name">Applicant Full Name (As per Application)</label>
+              <input type="text" id="doc-applicant-name-input" placeholder="e.g. Rahul Kumar" autocomplete="name">
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Used for AI name matching and initial variation verification.</span>
+            </div>
+
+            <div class="form-field-group">
+              <label for="doc-target-scheme-select" id="label-target-scheme">Target Government Scheme for Requirements Check</label>
+              <select id="doc-target-scheme-select">
+                <!-- Dynamically populated with schemes -->
+              </select>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Documents will be checked against the exact required checklist for this scheme.</span>
+            </div>
+          </div>
+
+          <!-- Dropzone Area -->
+          <div class="doc-dropzone" id="doc-dropzone" role="button" tabindex="0" aria-label="Upload document photograph or PDF">
+            <div class="doc-dropzone-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; color: var(--color-indian-blue); margin-bottom: 0.35rem;" id="text-dropzone-main">
+              Upload Document Photographs or Scanned PDFs
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); max-width: 520px; margin: 0 auto 1.25rem;" id="text-dropzone-sub">
+              Drag &amp; drop your document photograph, scanned image, or PDF here, or click to browse
+            </p>
+
+            <div class="doc-upload-actions">
+              <button type="button" class="btn btn-primary btn-sm" id="btn-browse-doc-files">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span id="label-btn-upload-doc">Upload Document</span>
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" id="btn-doc-camera-capture">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <span id="label-btn-capture-cam">Capture via Camera</span>
+              </button>
+            </div>
+
+            <input type="file" id="doc-file-input" multiple accept="image/*,application/pdf" style="display: none;">
+          </div>
+
+          <!-- Privacy Consent Checkbox (Requirement 23-I) -->
+          <div style="margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 0.65rem; background: var(--color-bg-light); border: 1px solid var(--color-border); padding: 0.85rem 1rem; border-radius: var(--radius-sm); font-size: 0.8125rem;">
+            <input type="checkbox" id="doc-consent-checkbox" checked style="margin-top: 0.2rem;">
+            <label for="doc-consent-checkbox" style="color: var(--color-text-main); cursor: pointer;">
+              <strong>Explicit Privacy Consent:</strong> I authorize Scheme Connect to run local AI analysis on my document images to check quality, readability, and name matching. I understand that processing occurs in the browser, sensitive numbers like Aadhaar are masked, and no documents are retained permanently.
+            </label>
+          </div>
+
+          <!-- Scheme Document Requirements Live Progress Checklist -->
+          <div style="margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+              <h4 style="font-size: 1.05rem; color: var(--color-indian-blue); margin: 0;" id="title-scheme-checklist">
+                Scheme-Specific Required Documents Checklist
+              </h4>
+              <span style="font-size: 0.8125rem; color: var(--color-text-muted);">Real-time Requirements Matcher</span>
+            </div>
+            <div id="doc-scheme-requirements-checklist" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;">
+              <!-- Populated from JS -->
+            </div>
+          </div>
+
+          <!-- Uploaded Documents Live Analysis Grid -->
+          <div style="margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <h4 style="font-size: 1.15rem; color: var(--color-indian-blue); margin: 0;">
+                Uploaded Documents Analysis (<span id="doc-uploaded-count">0 Documents</span>)
+              </h4>
+              <button type="button" class="btn btn-outline btn-sm" id="btn-clear-all-docs" style="color: #DC2626; border-color: #FCA5A5; font-size: 0.78rem;">
+                Clear All Documents
+              </button>
+            </div>
+            <div id="doc-uploaded-items-list">
+              <!-- Populated from JS -->
+            </div>
+          </div>
+
+          <!-- Action bar for Report Generation -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
+            <button type="button" class="btn btn-secondary" id="btn-generate-doc-report">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              Generate AI Document Checking Report
+            </button>
+          </div>
+
+          <!-- AI Document Report Summary Container (Requirement 23-H) -->
+          <div id="doc-ai-report-container" style="display: none; margin-top: 2.5rem; border-top: 2px dashed var(--color-border); padding-top: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+              <h3 style="font-size: 1.4rem; color: var(--color-indian-blue); margin: 0;" id="title-ai-report">
+                AI Document Checking Summary Report
+              </h3>
+              <button type="button" class="btn btn-outline btn-sm" onclick="window.print()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Print / Save PDF
+              </button>
+            </div>
+            <div id="doc-ai-report-body">
+              <!-- Populated from JS -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS SECTION ==================== -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-how">Simple Journey</span>
+          <h2 class="section-title" id="title-how">How It Works</h2>
+          <p class="section-subtitle" id="subtitle-how">
+            A straightforward 4-step path to finding and availing government welfare opportunities for you and your family.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number-bubble">1</div>
+            <h3 class="step-title" id="step1-title">Explore</h3>
+            <p class="step-desc" id="step1-desc">
+              Discover available government schemes across education, healthcare, farming, housing, pensions, and employment.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number-bubble">2</div>
+            <h3 class="step-title" id="step2-title">Understand</h3>
+            <p class="step-desc" id="step2-desc">
+              Learn about eligibility criteria, financial benefits, required documents, and guidelines in plain, easy-to-understand language.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number-bubble">3</div>
+            <h3 class="step-title" id="step3-title">Check</h3>
+            <p class="step-desc" id="step3-desc">
+              Use the interactive eligibility checker to pinpoint which schemes suit your individual or household circumstances.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number-bubble">4</div>
+            <h3 class="step-title" id="step4-title">Apply</h3>
+            <p class="step-desc" id="step4-desc">
+              Visit the verified official government portal or local citizen service centre directly with our guided checklist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE SCHEME CONNECT ==================== -->
+    <section class="section section-bg-light" id="why-choose">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-why" style="background-color: var(--color-soft-green); color: var(--color-indian-green);">Citizen First</span>
+          <h2 class="section-title" id="title-why">Why Choose Scheme Connect?</h2>
+          <p class="section-subtitle" id="subtitle-why">
+            Dedicated to simplifying citizen welfare and bridging the information gap with trust, clarity, and official sources.
+          </p>
+        </div>
+
+        <div class="why-choose-grid">
+          <div class="why-feature-card">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            </div>
+            <div class="why-text">
+              <h4>Easy Access to Scheme Information</h4>
+              <p>All central and state government schemes consolidated into one structured, easily searchable portal.</p>
+            </div>
+          </div>
+
+          <div class="why-feature-card">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="why-text">
+              <h4>Simple Explanations</h4>
+              <p>Jargon-free, clear explanations so farmers, workers, senior citizens, and students can easily understand.</p>
+            </div>
+          </div>
+
+          <div class="why-feature-card">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="why-text">
+              <h4>Category-Wise Discovery</h4>
+              <p>Browse by specific sectors like agriculture, women empowerment, healthcare, housing, and social security.</p>
+            </div>
+          </div>
+
+          <div class="why-feature-card">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="why-text">
+              <h4>Eligibility Guidance</h4>
+              <p>Transparent eligibility rules and interactive matching tools to save you time and eliminate uncertainty.</p>
+            </div>
+          </div>
+
+          <div class="why-feature-card">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </div>
+            <div class="why-text">
+              <h4>Direct Official Application Links</h4>
+              <p>Safe, verified links to official government portals (.gov.in / .nic.in) with zero intermediary middleman fees.</p>
+            </div>
+          </div>
+
+          <div class="why-feature-card">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="why-text">
+              <h4>Awareness of Welfare Opportunities</h4>
+              <p>Stay informed about new government budgets, grant announcements, and welfare expansions across India.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT US SECTION ==================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-about">About The Initiative</span>
+          <h2 class="section-title" id="title-about">Bridging the Welfare Information Gap</h2>
+          <p class="section-subtitle" id="subtitle-about">
+            Dedicated to empowering every Indian citizen with clear knowledge of government welfare programs.
+          </p>
+        </div>
+
+        <div class="about-card-wrapper">
+          <blockquote class="about-core-message" id="about-core-quote">
+            "Scheme Connect is an initiative focused on spreading awareness about government welfare schemes and helping citizens understand the opportunities available to them. Our mission is to bridge the information gap between government welfare programmes and the people who need them."
+          </blockquote>
+
+          <div class="about-trust-statement" id="about-disclosure-text">
+            <strong>Public Service Disclosure:</strong> Scheme Connect is an independent public-interest awareness and information portal. It is <em>not an official government website</em> and is not affiliated with, endorsed by, or partnered with any government department. All scheme applications, document processing, and final approvals are conducted strictly through respective official government portals and authorized government centres.
+          </div>
+
+          <div class="about-pillars-grid">
+            <div class="about-pillar-box">
+              <h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-indian-blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                Know
+              </h4>
+              <p>Transparent and verified information regarding benefits, eligibility criteria, and required paperwork.</p>
+            </div>
+
+            <div class="about-pillar-box">
+              <h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-indian-green)" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Access
+              </h4>
+              <p>Direct navigation to authenticated official government portals without middleman exploitation.</p>
+            </div>
+
+            <div class="about-pillar-box">
+              <h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-saffron-dark)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Benefit
+              </h4>
+              <p>Helping families, students, farmers, and workers enhance livelihoods and secure social protection.</p>
+            </div>
+          </div>
+
+          <div class="motto-banner" id="portal-motto-banner">
+            "Right Information. Right Scheme. Better Livelihood."
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="section section-bg-light" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" id="tag-contact">Citizen Support</span>
+          <h2 class="section-title" id="title-contact">Contact &amp; Assistance</h2>
+          <p class="section-subtitle" id="subtitle-contact">
+            Have questions about navigating schemes, or need to report outdated scheme information? Get in touch with our team.
+          </p>
+        </div>
+
+        <div class="contact-section-grid">
+          <div class="contact-form-card">
+            <h3 class="contact-form-title" id="title-form-send">Send Us a Message</h3>
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-field-group">
+                <label for="contact-name"><span id="label-form-name">Full Name</span> <span style="color: #DC2626;">*</span></label>
+                <input type="text" id="contact-name" name="name" placeholder="Enter your full name" required minlength="2">
+              </div>
+
+              <div class="form-field-group">
+                <label for="contact-email"><span id="label-form-email">Email Address</span> <span style="color: #DC2626;">*</span></label>
+                <input type="email" id="contact-email" name="email" placeholder="name@example.com" required>
+              </div>
+
+              <div class="form-field-group">
+                <label for="contact-subject"><span id="label-form-subject">Subject</span> <span style="color: #DC2626;">*</span></label>
+                <input type="text" id="contact-subject" name="subject" placeholder="e.g. Question about PM-KISAN or Feedback" required minlength="3">
+              </div>
+
+              <div class="form-field-group">
+                <label for="contact-message"><span id="label-form-message">Message</span> <span style="color: #DC2626;">*</span></label>
+                <textarea id="contact-message" name="message" rows="4" placeholder="How can we assist you with government scheme information?" required minlength="10" style="padding: 0.75rem 1rem; border: 1.5px solid var(--color-border); border-radius: var(--radius-sm); outline: none; font-family: inherit; font-size: 0.9375rem;"></textarea>
+              </div>
+
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5;">
+                We respect your privacy. Contact details submitted here are strictly used to reply to your inquiry. Please <strong>do not include</strong> confidential information such as passwords, OTPs, or Aadhaar numbers.
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="btn-submit-contact">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span id="label-btn-send-message">Send Message</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="contact-info-panel">
+            <div class="helplines-card">
+              <h4 id="title-helplines">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Official National Citizen Helplines
+              </h4>
+              <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+                For immediate government assistance, scheme grievance redressal, or application status inquiries, you can reach out directly to official national toll-free helplines:
+              </p>
+
+              <div class="helpline-item">
+                <div>
+                  <strong>Kisan Call Centre (Farmers)</strong>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted);">Ministry of Agriculture &amp; Farmers Welfare</div>
+                </div>
+                <span class="helpline-number">1551</span>
+              </div>
+
+              <div class="helpline-item">
+                <div>
+                  <strong>Ayushman Bharat PM-JAY (Health)</strong>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted);">National Health Authority (Toll-Free)</div>
+                </div>
+                <span class="helpline-number">14555</span>
+              </div>
+
+              <div class="helpline-item">
+                <div>
+                  <strong>Women Helpline (Safety &amp; Schemes)</strong>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted);">Ministry of Women &amp; Child Development</div>
+                </div>
+                <span class="helpline-number">181</span>
+              </div>
+
+              <div class="helpline-item">
+                <div>
+                  <strong>Senior Citizens Helpline (Elder Line)</strong>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted);">National Old Age Welfare Helpline</div>
+                </div>
+                <span class="helpline-number">14567</span>
+              </div>
+
+              <div class="helpline-item">
+                <div>
+                  <strong>National Scholarship Portal Helpdesk</strong>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted);">Students &amp; Higher Education Scholarships</div>
+                </div>
+                <span class="helpline-number">0120-6619540</span>
+              </div>
+
+              <div class="helpline-item">
+                <div>
+                  <strong>National Consumer Helpline</strong>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted);">Department of Consumer Affairs</div>
+                </div>
+                <span class="helpline-number">1915</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-info">
+          <img src="symbol.jpeg" alt="Scheme Connect - Government Schemes for a Better Tomorrow">
+          <p class="footer-desc" id="footer-desc-text">
+            Scheme Connect is a dedicated government scheme awareness portal empowering Indian citizens with accurate information, eligibility guidance, and direct official application links.
+          </p>
+          <div style="color: var(--color-sky-blue); font-weight: 600; font-size: 0.875rem;" id="footer-tagline-text">
+            Tagline: Know • Access • Benefit
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#all-schemes">All Schemes</a></li>
+            <li><a href="#categories">Browse Categories</a></li>
+            <li><a href="#eligibility">Eligibility Checker</a></li>
+            <li><a href="#document-checker">Document Checker</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#about">About Scheme Connect</a></li>
+            <li><a href="#contact">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Top Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="#all-schemes" onclick="filterByCategory('agriculture')">Agriculture Schemes</a></li>
+            <li><a href="#all-schemes" onclick="filterByCategory('healthcare')">Healthcare Schemes</a></li>
+            <li><a href="#all-schemes" onclick="filterByCategory('education')">Education Schemes</a></li>
+            <li><a href="#all-schemes" onclick="filterByCategory('women')">Women Empowerment</a></li>
+            <li><a href="#all-schemes" onclick="filterByCategory('housing')">Housing Schemes</a></li>
+            <li><a href="#all-schemes" onclick="filterByCategory('employment')">Employment Schemes</a></li>
+            <li><a href="#all-schemes" onclick="filterByCategory('financial')">Financial Assistance</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Portal Information</h4>
+          <p style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6; margin-bottom: 1rem;">
+            Independent Public Welfare Initiative.<br>
+            Designed with accessible standards for rural and urban citizens alike.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <button type="button" class="btn btn-outline btn-sm" id="btn-footer-admin" style="border-color: rgba(255,255,255,0.25); color: white; justify-content: flex-start;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Admin Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mandatory Disclaimer Box (Requirement #14) -->
+      <div class="footer-disclaimer-card">
+        <p id="footer-disclaimer-p">
+          <strong>Official Disclaimer:</strong> "Scheme Connect is an independent government scheme awareness platform. It is not affiliated with or endorsed by any government department. Users should verify scheme details and eligibility through the relevant official government portal."
+        </p>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="current-year">2026</span> Scheme Connect. <span id="footer-rights-label">All Rights Reserved. Public welfare information awareness portal.</span>
+        </div>
+        <div>
+          <a href="#" id="link-privacy-policy">Privacy Policy</a>
+          <a href="#" id="link-terms-conditions">Terms &amp; Conditions</a>
+          <a href="#home">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING VOICE ASSISTANT BUTTON (Requirement #17) ==================== -->
+  <button type="button" class="floating-assistant-btn" id="floating-assistant-btn" title="Open Scheme Connect Voice Assistant" aria-label="Open Scheme Connect Voice Assistant">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+  </button>
+
+  <!-- ==================== AI VOICE ASSISTANT CHAT DRAWER (Requirement #17, 19, 20) ==================== -->
+  <aside class="assistant-chat-drawer" id="assistant-chat-drawer" role="dialog" aria-modal="true" aria-labelledby="assistant-dialog-title">
+    <div class="assistant-header">
+      <div class="assistant-header-left">
+        <div class="assistant-avatar-badge" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size: 0.95rem; margin: 0; color: white;" id="assistant-dialog-title">Scheme Connect Assistant</h3>
+          <span style="font-size: 0.72rem; color: var(--color-sky-blue);">AI Voice &amp; Chat Help</span>
+        </div>
+      </div>
+      
+      <div class="assistant-header-actions">
+        <div class="assistant-speaking-wave" id="assistant-speaking-wave">
+          <span></span><span></span><span></span>
+        </div>
+        <button type="button" class="assistant-header-btn" id="btn-assistant-lang" title="Toggle Assistant Language">
+          EN | ಕನ್ನಡ
+        </button>
+        <button type="button" class="assistant-header-btn" id="btn-assistant-mute" title="Toggle Voice Sound">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <span>Voice On</span>
+        </button>
+        <button type="button" class="assistant-header-btn" id="btn-close-assistant" title="Close" aria-label="Close assistant">
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Listening Status Banner -->
+    <div class="assistant-listening-status" id="assistant-listening-status">
+      Listening... Speak your question now
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="assistant-messages-body" id="assistant-messages-body">
+      <!-- Populated from assistant.js -->
+    </div>
+
+    <!-- Suggested Questions Section -->
+    <div class="assistant-suggested-section">
+      <div class="assistant-suggested-label" id="label-suggested-qs">Suggested Questions:</div>
+      <div class="assistant-suggested-pills" id="assistant-suggested-pills">
+        <!-- Populated from assistant.js -->
+      </div>
+    </div>
+
+    <!-- Assistant Input Bar -->
+    <div class="assistant-input-bar">
+      <button type="button" class="mic-circle-btn" id="assistant-mic-input-btn" title="Click to speak (Voice Input)" aria-label="Microphone Voice Input">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
+
+      <input type="text" id="assistant-text-input" class="assistant-text-field" placeholder="Ask in English or ಕನ್ನಡ (Type or speak)..." aria-label="Ask assistant">
+
+      <button type="button" class="send-circle-btn" id="btn-assistant-send" title="Send" aria-label="Send message">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+
+      <button type="button" class="assistant-header-btn" id="btn-clear-chat" title="Clear chat" style="color: var(--color-text-muted); background: transparent; border: none; font-size: 0.75rem;">
+        Clear
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================== CAMERA CAPTURE MODAL ==================== -->
+  <div class="modal-overlay" id="modal-camera-capture" role="dialog" aria-modal="true" aria-labelledby="camera-modal-title">
+    <div class="modal-dialog camera-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="camera-modal-title" style="font-size: 1.25rem;">Capture Document Photo</h3>
+        <button type="button" class="modal-close-btn" id="btn-close-camera-modal">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1rem; text-align: center;">
+        <video id="camera-stream-video" class="camera-video-stream" autoplay playsinline></video>
+        <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin: 0.75rem 0 0;">
+          Hold the document steady within the frame. Ensure good lighting and all four edges are visible.
+        </p>
+      </div>
+      <div class="modal-footer" style="justify-content: center; gap: 1rem;">
+        <button type="button" class="btn btn-secondary" id="btn-capture-snapshot">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          Capture Snapshot
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Scheme View Modal -->
+  <div class="modal-overlay" id="modal-scheme-details" role="dialog" aria-modal="true" aria-labelledby="detail-scheme-name">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="detail-scheme-name">Scheme Details</h2>
+          <div class="modal-scheme-meta" id="detail-scheme-meta"></div>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-scheme-modal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body" id="detail-scheme-body"></div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" id="btn-bookmark-modal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          <span id="btn-bookmark-modal-text">Save Scheme</span>
+        </button>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="detail-official-btn">
+          Visit Official Portal
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard Modal -->
+  <div class="modal-overlay" id="modal-admin-dashboard" role="dialog" aria-modal="true" aria-labelledby="admin-dialog-title">
+    <div class="modal-dialog" style="max-width: 950px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="admin-dialog-title">Admin Management Portal</h2>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Add, edit, update, and manage government schemes database with real-time browser persistence.</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-admin-modal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.75rem;">
+          <button type="button" class="btn btn-primary btn-sm" id="tab-admin-list">Manage Schemes (<span id="admin-total-count">0</span>)</button>
+          <button type="button" class="btn btn-outline btn-sm" id="tab-admin-add">+ Add New Scheme</button>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-admin-export" style="margin-left: auto;">Export JSON</button>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-admin-reset" style="color: #DC2626; border-color: #FCA5A5;">Reset to Defaults</button>
+        </div>
+
+        <div id="admin-view-list">
+          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+            <input type="text" id="admin-search-input" placeholder="Search schemes to edit or update..." style="flex: 1; padding: 0.6rem 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); outline: none;">
+          </div>
+          <div style="overflow-x: auto; max-height: 450px; border: 1px solid var(--color-border); border-radius: var(--radius-sm);">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+              <thead style="background: var(--color-bg-light); border-bottom: 1px solid var(--color-border); position: sticky; top: 0;">
+                <tr>
+                  <th style="padding: 0.75rem 1rem;">Scheme Name</th>
+                  <th style="padding: 0.75rem 1rem;">Category</th>
+                  <th style="padding: 0.75rem 1rem;">State</th>
+                  <th style="padding: 0.75rem 1rem;">Last Updated</th>
+                  <th style="padding: 0.75rem 1rem; text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-schemes-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="admin-view-form" style="display: none;">
+          <form id="admin-scheme-form">
+            <input type="hidden" id="admin-form-mode" value="add">
+            <input type="hidden" id="admin-scheme-id" value="">
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="form-field-group">
+                <label for="admin-input-name">Scheme Name *</label>
+                <input type="text" id="admin-input-name" required placeholder="e.g. Pradhan Mantri Kisan Samman Nidhi">
+              </div>
+              <div class="form-field-group">
+                <label for="admin-input-category">Category *</label>
+                <select id="admin-input-category" required>
+                  <option value="Education Schemes">Education Schemes</option>
+                  <option value="Agriculture Schemes">Agriculture Schemes</option>
+                  <option value="Healthcare Schemes">Healthcare Schemes</option>
+                  <option value="Employment Schemes">Employment Schemes</option>
+                  <option value="Women Empowerment Schemes">Women Empowerment Schemes</option>
+                  <option value="Housing Schemes">Housing Schemes</option>
+                  <option value="Financial Assistance Schemes">Financial Assistance Schemes</option>
+                  <option value="Social Welfare Schemes">Social Welfare Schemes</option>
+                  <option value="Skill Development Schemes">Skill Development Schemes</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="form-field-group">
+                <label for="admin-input-dept">Department / Ministry *</label>
+                <input type="text" id="admin-input-dept" required placeholder="e.g. Ministry of Agriculture">
+              </div>
+              <div class="form-field-group">
+                <label for="admin-input-state">State / Region *</label>
+                <input type="text" id="admin-input-state" required placeholder="All India or Karnataka">
+              </div>
+              <div class="form-field-group">
+                <label for="admin-input-type">Scheme Type *</label>
+                <select id="admin-input-type">
+                  <option value="Central Sector Scheme">Central Sector Scheme</option>
+                  <option value="Centrally Sponsored Scheme">Centrally Sponsored Scheme</option>
+                  <option value="State Government Scheme">State Government Scheme</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field-group" style="margin-bottom: 1rem;">
+              <label for="admin-input-shortdesc">Short Description (for Cards) *</label>
+              <textarea id="admin-input-shortdesc" rows="2" required placeholder="One or two sentences explaining the core benefit." style="padding: 0.6rem 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); outline: none;"></textarea>
+            </div>
+
+            <div class="form-field-group" style="margin-bottom: 1rem;">
+              <label for="admin-input-benefits">Main Benefits (One benefit per line) *</label>
+              <textarea id="admin-input-benefits" rows="3" required placeholder="Enter key benefits, one per line" style="padding: 0.6rem 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); outline: none;"></textarea>
+            </div>
+
+            <div class="form-field-group" style="margin-bottom: 1rem;">
+              <label for="admin-input-eligibility">Eligibility Criteria (One criterion per line) *</label>
+              <textarea id="admin-input-eligibility" rows="3" required placeholder="Enter eligibility conditions, one per line" style="padding: 0.6rem 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); outline: none;"></textarea>
+            </div>
+
+            <div class="form-field-group" style="margin-bottom: 1rem;">
+              <label for="admin-input-documents">Required Documents (One document per line) *</label>
+              <textarea id="admin-input-documents" rows="2" required placeholder="e.g. Aadhaar Card&#10;Bank Passbook&#10;Land Record" style="padding: 0.6rem 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); outline: none;"></textarea>
+            </div>
+
+            <div class="form-field-group" style="margin-bottom: 1rem;">
+              <label for="admin-input-process">Application Process (One step per line) *</label>
+              <textarea id="admin-input-process" rows="3" required placeholder="Step-by-step application instructions" style="padding: 0.6rem 0.85rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); outline: none;"></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+              <div class="form-field-group">
+                <label for="admin-input-link">Official Application Link (.gov.in / .nic.in) *</label>
+                <input type="url" id="admin-input-link" required placeholder="https://pmkisan.gov.in/">
+              </div>
+              <div class="form-field-group">
+                <label for="admin-input-updated">Last Updated Date (Month Year) *</label>
+                <input type="text" id="admin-input-updated" required placeholder="November 2026">
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+              <button type="button" class="btn btn-outline" id="btn-admin-cancel-form">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="btn-admin-save-scheme">Save Scheme</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saved Schemes Modal -->
+  <div class="modal-overlay" id="modal-saved-schemes" role="dialog" aria-modal="true" aria-labelledby="saved-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="saved-modal-title">My Saved Schemes</h2>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">Easily review, track, and prepare applications for your bookmarked welfare schemes.</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-saved-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="saved-schemes-body"></div>
+    </div>
+  </div>
+
+  <!-- Citizen Login Modal -->
+  <div class="modal-overlay" id="modal-citizen-login" role="dialog" aria-modal="true" aria-labelledby="login-dialog-title">
+    <div class="modal-dialog" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2 class="modal-title" id="login-dialog-title">Citizen Login</h2>
+        <button type="button" class="modal-close-btn" id="btn-close-login-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
+          Log in or register your citizen account to save schemes, track application timelines, and receive personalized scheme updates.
+        </p>
+
+        <form id="citizen-auth-form">
+          <div class="form-field-group" style="margin-bottom: 1rem;">
+            <label for="auth-mobile">Mobile Number / Email</label>
+            <input type="text" id="auth-mobile" required placeholder="Enter 10-digit mobile or email">
+          </div>
+
+          <div class="form-field-group" style="margin-bottom: 1rem;">
+            <label for="auth-name">Your Name (Optional)</label>
+            <input type="text" id="auth-name" placeholder="Enter your full name">
+          </div>
+
+          <div class="form-field-group" style="margin-bottom: 1.5rem;">
+            <label for="auth-state">Home State</label>
+            <select id="auth-state">
+              <option value="Karnataka">Karnataka</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="All India">Other / Pan-India</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+            Continue to Scheme Connect
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal Modal -->
+  <div class="modal-overlay" id="modal-legal" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+    <div class="modal-dialog" style="max-width: 680px;">
+      <div class="modal-header">
+        <h2 class="modal-title" id="legal-title">Privacy Policy &amp; Terms</h2>
+        <button type="button" class="modal-close-btn" id="btn-close-legal-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-main);">
+        <h4 style="color: var(--color-indian-blue); margin-bottom: 0.5rem;">Privacy Policy</h4>
+        <p>Scheme Connect is built on a privacy-first foundation. We do not require, collect, or store sensitive identifying credentials such as Aadhaar numbers, biometric data, or banking credentials. Any criteria entered into the interactive Eligibility Checker or Document Checker runs purely client-side on your local device.</p>
+        
+        <h4 style="color: var(--color-indian-blue); margin: 1rem 0 0.5rem;">Terms &amp; Disclaimer</h4>
+        <p>Scheme Connect is an independent awareness portal. It is not an official government entity and does not charge any fee for accessing scheme information. While every effort is made to maintain verified and up-to-date scheme criteria from official gazettes and portals, citizens are strongly advised to verify details through the relevant official government portal before applying.</p>
+        
+        <h4 style="color: var(--color-indian-blue); margin: 1rem 0 0.5rem;">Official Government Links</h4>
+        <p>All external links lead directly to official Central and State government domains (.gov.in, .nic.in). Scheme Connect does not act as an agent or intermediary.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Application Scripts -->
+  <script src="data/schemes.js"></script>
+  <script src="data/translations.js"></script>
+  <script src="app.js"></script>
+  <script src="assistant.js"></script>
+  <script src="documentChecker.js"></script>
+</body>
+</html>
